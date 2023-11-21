@@ -5,28 +5,30 @@ import Card from "./Card";
 
 const projects = [
   {
-    title: "React Space",
+    title: "Fact-checking system",
     description:
-      "Handy tool belt to create amazing AR components in a React app, with redux integration via middleware️",
-    getImageSrc: () => require("../images/photo1.jpg"),
+      "This project developed an innovative automated system for fact-checking claims related to climate change."
+      + "Utilizing a blend of advanced NLP techniques, the system efficiently processes vast amount of data"
+      + " to verify the truthfulness of various statements.",
+    getImageSrc: () => require("../images/fact_checking.png"),
   },
   {
-    title: "React Infinite Scroll",
+    title: "E-ticket",
     description:
-      "A scrollable bottom sheet with virtualisation support, native animations at 60 FPS and fully implemented in JS land 🔥️",
-    getImageSrc: () => require("../images/photo2.jpg"),
+      "This ASP.NET based web application revolutionizes the movie ticket purchasing experience by offering a user-friendly online platform.",
+    getImageSrc: () => require("../images/e_ticket.png"),
   },
   {
-    title: "Photo Gallery",
+    title: "Password manager with security and usability",
     description:
-      "A One-stop shop for photographers to share and monetize their photos, allowing them to have a second source of income",
-    getImageSrc: () => require("../images/photo3.jpg"),
+      "A password manager meticulously designed to balance stringent security with intuitive usability, ensuring safe and effortless password management.",
+    getImageSrc: () => require("../images/password_manager.png"),
   },
   {
-    title: "Event planner",
+    title: "AI agent for Reversi",
     description:
-      "A mobile application for leisure seekers to discover unique events and activities in their city with a few taps",
-    getImageSrc: () => require("../images/photo4.jpg"),
+      "A Reversi AI agent project, ingeniously employing Monte Carlo Tree Search and Minimax.",
+    getImageSrc: () => require("../images/reversi.png"),
   },
 ];
 
