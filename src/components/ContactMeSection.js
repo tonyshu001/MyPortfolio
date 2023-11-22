@@ -46,15 +46,12 @@ const LandingSection = () => {
   });
 
   useEffect(() => {
-    // Only proceed if there is a response from the submit hook
     if (response) {
       const { type, message } = response;
-      // If the response type is 'success', show a success alert and reset the form
       if (type === 'success') {
         onOpen('success', message);
         formik.resetForm();
       }
-      // If the response type is 'error', show an error alert
       else if (type === 'error') {
         onOpen('error', message);
       }
