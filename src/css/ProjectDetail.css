@@ -1,0 +1,59 @@
+.project-detail-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .project-description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .project-pdf-link,
+  .project-github-link {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .project-pdf-link:hover,
+  .project-github-link:hover {
+    background-color: #0056b3;
+  }
+  
+  .back-to-home {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .back-to-home:hover {
+    color: #333;
+  }
+  
