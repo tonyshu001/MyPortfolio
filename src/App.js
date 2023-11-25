@@ -24,7 +24,6 @@ function App() {
                 <ProjectsSection /> 
               </>
             } />
-            
             <Route path="projects/:projectTitle" element={<ProjectDetail />} />
             <Route path="contact" element={<ContactMeSection />} />
           </Routes>

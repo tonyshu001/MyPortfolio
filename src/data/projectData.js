@@ -15,7 +15,7 @@ const projects = [
         title: "E-ticket",
         description:
             "This ASP.NET based web application revolutionizes the movie ticket purchasing experience by offering a user-friendly online platform.",
-        getImageSrc: () => require("../images/e_ticket.png"),
+        getImageSrc: () => require("../data/images/e_ticket.png"),
         linkTo: "/projects/e-ticket",
     },
     {
@@ -23,7 +23,7 @@ const projects = [
         title: "Password manager with security and usability",
         description:
             "A password manager meticulously designed to balance stringent security with intuitive usability, ensuring safe and effortless password management.",
-        getImageSrc: () => require("../images/password_manager.png"),
+        getImageSrc: () => require("../data/images/password_manager.png"),
         linkTo: "/projects/password-manager",
     },
     {
@@ -31,7 +31,7 @@ const projects = [
         title: "AI agent for Reversi",
         description:
             "A Reversi AI agent project, ingeniously employing Monte Carlo Tree Search and Minimax.",
-        getImageSrc: () => require("../images/reversi.png"),
+        getImageSrc: () => require("../data/images/reversi.png"),
         linkTo: "/projects/reversi",
     },
   ];

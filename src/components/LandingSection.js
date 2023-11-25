@@ -1,7 +1,7 @@
 import React from "react";
 import { Avatar, Heading, VStack } from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
-import profilePic from '../images/profile_pic.jpg';
+import profilePic from '../data/images/profile_pic.jpg';
 
 
 
