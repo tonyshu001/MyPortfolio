@@ -1,4 +1,5 @@
 .project-detail-container {
+    text-align: center;
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
@@ -45,15 +46,72 @@
   }
   
   .back-to-home {
-    display: inline-block;
+    display: inline-block; 
     padding: 10px 15px;
-    border-radius: 5px;
-    color: #666;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #0366d6;
     text-decoration: none;
-    transition: color 0.3s;
+    border: 1px solid #0356c6;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-top: 20px; 
   }
   
   .back-to-home:hover {
-    color: #333;
+    background-color: #0249a1; /* Slightly darker on hover for effect */
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+    transform: translateY(-2px); /* Slight move up to give a pressing effect */
   }
   
+  .back-to-home-wrapper {
+    text-align: center;
+    margin-top: 20px; /* Adjust as necessary for spacing */
+  }
+
+
+.collapsible-section {
+  background-color: #e7f1ff; 
+  color: #0366d6; 
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 10px; 
+  transition: background-color 0.3s; 
+}
+
+
+.content {
+  padding: 0 18px 18px; 
+  display: none; 
+  background-color: #f9f9f9; 
+  border-radius: 0 0 8px 8px; 
+}
+
+
+.collapsible-section.active + .content {
+  display: block; 
+  padding: 18px; 
+  animation: fadeIn 0.3s ease-in-out; 
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+.project-pdf-link,
+.project-github-link {
+  border-radius: 4px; 
+  font-weight: 500; 
+}
