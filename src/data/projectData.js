@@ -75,6 +75,46 @@ const projects = [
             "This ASP.NET based web application revolutionizes the movie ticket purchasing experience by offering a user-friendly online platform.",
         getImageSrc: () => require("../data/images/e_ticket.png"),
         linkTo: "/projects/e-ticket",
+        hasReport: false,
+        hasCode: true,
+        githubLink: "https://github.com/tonyshu001/eTickets",
+        specification: `    
+        <h2>Overview</h2>
+        <p>This portfolio project showcases the development of a fully-functional e-commerce application using ASP.NET MVC (.NET 5). The project was part of an extensive course that covered the breadth of ASP.NET MVC application development, starting from an empty project in Visual Studio and building up to a comprehensive, commercial-grade web application.</p>
+        
+        <h2>Key Features</h2>
+        <ul>
+          <li>MVC Architecture: Employed the Model-View-Controller pattern to ensure separation of concerns, facilitating easy maintenance and scalability of the application.</li>
+          <li>SQL Database Integration: Utilized SQL Server for data storage, leveraging Entity Framework for effective database interactions.</li>
+          <li>Entity Framework Migrations: Implemented database schema updates and data manipulation (CRUD operations) using Entity Framework migrations.</li>
+          <li>Service Layer: Developed services and generic repositories for data operations, enhancing code reusability and efficiency.</li>
+          <li>Dynamic Content Rendering: Utilized ViewComponents for dynamic content rendering within the application.</li>
+          <li>PayPal Integration: Integrated PayPal for processing online payments, enhancing the e-commerce functionality.</li>
+          <li>Role-Based Features: Implemented role-based authorization and UI rendering to cater to different user levels.</li>
+        </ul>
+        
+        <h2>Technologies and Tools</h2>
+        <ul>
+          <li>.NET 5 & ASP.NET MVC: For building the core application structure and logic.</li>
+          <li>Entity Framework Core: ORM tool for database interactions.</li>
+          <li>SQL Server: Database management system for storing application data.</li>
+          <li>Visual Studio: Integrated development environment for writing and testing code.</li>
+        </ul>
+        
+        <h2>Skills Demonstrated in the Project</h2>
+        <h3>Proficiencies Developed</h3>
+        <ul>
+          <li>ASP.NET MVC Framework Mastery: Demonstrated thorough understanding and application of ASP.NET MVC's core components including Models, ViewModels, Views, Partial Views, and Controllers.</li>
+          <li>Advanced CRUD Operations: Skilled in performing Create, Read, Update, and Delete operations using Entity Framework Core with SQL Server.</li>
+          <li>RESTful Service Development: Developed proficiency in building RESTful services, applying principles of .NET.</li>
+          <li>Authentication and Authorization Expertise: Gained substantial experience in implementing .NET Identity Framework for secure and role-based access control.</li>
+          <li>Third-Party Integration: Successfully integrated PayPal for online payment processing, demonstrating the ability to incorporate external services into web applications.</li>
+          <li>Cloud Deployment: Acquired hands-on experience in deploying applications and databases to cloud platforms, specifically Microsoft Azure.</li>
+        </ul>
+        
+        <h3>Application of Skills</h3>
+        <p>This project served as a practical application of the aforementioned skills, showcasing my ability to develop a feature-rich, scalable, and secure e-commerce web application using the ASP.NET MVC framework.</p>
+        `,
     },
     {
         id:"password-manager",
