@@ -123,6 +123,64 @@ const projects = [
             "A password manager meticulously designed to balance stringent security with intuitive usability, ensuring safe and effortless password management.",
         getImageSrc: () => require("../data/images/password_manager.png"),
         linkTo: "/projects/password-manager",
+        hasReport: true,
+        hasCode: true,
+        githubLink: "https://github.com/GG2T/PasswordManager",
+        specification: `
+        <h2>Overview</h2>
+        <p>This project presents an innovative password manager designed to balance the crucial aspects of security and usability. It addresses the common trade-off between these two elements, proposing a solution that enhances password protection while maintaining user-friendliness.</p>
+    
+        <h2>Problem Statement</h2>
+        <p>Effective password management is hindered by the trade-off between complexity for security and simplicity for memorability. Users often resort to weak passwords that are susceptible to attacks, compromising their online security. This project seeks to develop a password manager that harmonizes the need for robust security with user-friendly design, enabling strong password protection without sacrificing ease of use.</p>
+    
+        <h2>Technologies Used</h2>
+        <ul>
+            <li><strong>SHA-256 Hashing Function:</strong> For password generation and security.</li>
+            <li><strong>Graphical User Interface (GUI):</strong> For user interaction and master code input.</li>
+        </ul>
+    
+        <h2>Key Features</h2>
+        <ol>
+            <li>Multiple Master Codes: Incorporates a unique feature of allowing multiple graphical master codes, enhancing security by reducing the risk of total password compromise and easing memorability.</li>
+            <li>Graphical Master Code Representation: Utilizes a graphical interface for master codes, improving user memorability compared to traditional textual passwords.</li>
+            <li>Dynamic Password Generation: Employs SHA-256, a cryptographic hashing function, for generating strong and unique passwords for each user account.</li>
+            <li>Secure Data Storage: Stores only essential parameters needed for password generation, ensuring confidentiality and recalculating passwords at runtime.</li>
+            <li>Error Tolerance for Users: Implements an error tolerance mechanism that distinguishes between genuine user errors and unauthorized access attempts, enhancing user experience.</li>
+        </ol>
+    
+        <h2>User Interface</h2>
+        <p>The project includes a user-friendly interface for setting new categories and entering master codes using image tiles, providing an intuitive and interactive experience.
+        It features a ‘Get Password’ interface that generates new passwords and displays account information post-authentication.</p>
+    
+        <h2>Workflow of the Advanced Password Manager</h2>
+        <h3>Creating New Categories and Master Codes</h3>
+        <p>The user initiates a new password category by selecting the "Set a new category" option within the user interface. They are prompted to assign a name for the category and choose an image to represent the master code. The system segments the chosen image into a grid, allowing the user to select specific segments as their graphical master code. These selections are then hashed and stored securely in the system’s data storage, thus completing the setup of a new category.</p>
+    
+        <h3>Master Code Verification Process</h3>
+        <p>To authenticate and gain access to the stored passwords, the user must correctly identify and select the previously determined segments of their image-based master code. The system compares the hashed value of this attempted entry against the stored hash value. If a match is found, access is granted and the user proceeds to the next stage. Users are given three attempts to enter the correct master code. If unsuccessful, the category is locked to prevent unauthorized access. However, the system is designed with an error tolerance mechanism that tracks the user's last few incorrect attempts. If these patterns are repeated in future login attempts, suggesting a genuine user error, additional attempts may be allowed.</p>
+    
+        <h3>Password Generation</h3>
+        <p>Upon successful master code verification, the password generation interface is presented. The system temporarily stores the master code in memory and prompts the user to input the URL and username associated with the account for which a password is needed. These inputs are concatenated and passed through the SHA-256 hashing function to generate a strong, unique password. The URL and username are then recorded in the data storage, but the password itself is not, ensuring that no sensitive information is stored that could be exposed in the event of a data breach.</p>
+    
+        <h3>Password Retrieval at Runtime</h3>
+        <p>When a user needs to retrieve a password, the system computes it in real-time using the stored URL and username along with the master code provided during the login phase. This process ensures that passwords are never stored in plain text but are instead generated on-the-fly, providing an additional layer of security.</p>
+    
+        <h3>User Interface Interaction</h3>
+        <p>The user interface is streamlined to support the workflow intuitively. It includes visual cues for category creation, master code setup, and password generation, ensuring a user-friendly experience. Figures 6, 7, 8, and 9 illustrate the sequence of user interactions and system processes that define the workflow of the password manager.</p>
+
+        <h2>Evaluation and Results</h2>
+        <p>The study by Florencio et al. provides an insightful analysis of two prevalent models of password attacks: online and offline. Online attacks are typically direct attempts to access accounts through the server's interface, where the server controls and logs each attempt. Offline attacks, on the other hand, involve attackers leveraging their own systems to decipher passwords without such immediate oversight. The research posits that the minimum threshold of attempts an effective password should withstand is 
+        10<sup>6</sup> for online and 10<sup>14</sup> for offline intrusions.</p>
+        <br>
+        <p>Our evaluation, utilizing the zxcvbn algorithm, indicates that while the passwords generated by our system are robust enough to surpass the threshold for online attacks, they do not consistently meet the benchmark for resilience against offline attacks. This is evident in Table 3, which details the estimated number of attempts required to breach the generated passwords.</p>
+        <br>
+        <p>To address this shortfall and fortify passwords against offline attack scenarios, our study suggests the integration of a more advanced password generation mechanism. The incorporation of techniques such as salted hashes, where additional random data is used as part of the hashing process, and the iterative hashing of passwords, can significantly enhance password strength. By executing the hash function multiple times, the complexity and computational effort required to crack the password increases, thus elevating the security profile of the generated passwords.</p>
+    
+        <h2>Conclusions and Future Directions</h2>
+        <p>The project exemplifies a balanced approach to password management, ensuring both security and usability. <p>
+        <br>
+        <p>Future enhancements include multi-platform support, cloud storage integration, advanced hashing techniques, and password recovery options.</p>
+        `,
     },
     {
         id: "reversi",

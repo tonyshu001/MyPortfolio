@@ -8,7 +8,8 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 const ProjectDetail = () => {
   const [project, setProject] = useState(null);
   const [showSpecs, setShowSpecs] = useState(false);
-  const [showRepo, setShowRepo] = useState(false);
+  const [showReport, setShowReport] = useState(false);
+  const [showCode, setShowCode] = useState(false);
   const { projectTitle } = useParams(); 
 
   useEffect(() => {
@@ -28,9 +29,14 @@ const ProjectDetail = () => {
     setShowSpecs(!showSpecs);
   };
 
-  const toggleRepo = () => {
-    setShowRepo(!showRepo);
-  };
+  const toggleShowReport = () => {
+    setShowReport(!showReport);
+  }
+
+  const toggleShowCode = () => {
+    setShowCode(!showCode);
+  }
+
 
   const getIcon = (isActive) => {
     return isActive ? faChevronUp : faChevronDown;
@@ -42,39 +48,45 @@ const ProjectDetail = () => {
       <img src={project.getImageSrc()} alt={project.title} className="project-image"/>
       <p className="project-description">{project.description}</p>
 
-      {/* Collapsible section for project specifications */}
-      <div className={`collapsible-section ${showSpecs ? 'active' : ''}`} onClick={toggleSpecs}>
+      {/* Project Specifications Section */}
+      <div className="collapsible-section" onClick={toggleSpecs}>
         <span>Project Specifications</span>
         <FontAwesomeIcon icon={getIcon(showSpecs)} className="fa-icon" />
       </div>
-      {/* Content section immediately follows the toggle for CSS sibling selector */}
       {showSpecs && (
         <div className="content">
-          {<div dangerouslySetInnerHTML={{ __html: project.specification }} />}
+          <div dangerouslySetInnerHTML={{ __html: project.specification }} />
         </div>
       )}
 
-      {project.hasReport || project.hasCode ? (
-        <div className={`collapsible-section ${showRepo ? 'active' : ''}`} onClick={toggleRepo}>
-          <span>{project.hasReport ? 'Technical Report' : 'GitHub Repository'}</span>
-          <FontAwesomeIcon icon={getIcon(showRepo)} className="fa-icon" />
-        </div>
-      ) : null}
-
-      {/* Content section for GitHub link or PDF */}
-      {showRepo && (
-        <div className="content">
-          {project.hasReport ? (
-            // Assuming the report is stored in a 'reports' folder in 'public'
-            <a href={`${process.env.PUBLIC_URL}/reports/${project.id}.pdf`} className="project-pdf-link" download>Download Technical Report</a>
-          ) : null}
-          {project.hasCode ? (
-            // Replace `project.githubLink` with the actual GitHub link of your project
-            <a href={project.githubLink} className="project-github-link" target="_blank" rel="noopener noreferrer">View Code on GitHub</a>
-          ) : null}
-        </div>
+      {project.hasReport && (
+        <>
+          <div className={`collapsible-section ${showReport ? 'active' : ''}`} onClick={toggleShowReport}>
+            <span>Technical Report</span>
+            <FontAwesomeIcon icon={getIcon(showReport)} className="fa-icon" />
+          </div>
+          {showReport && (
+            <div className="content">
+              <a href={`${process.env.PUBLIC_URL}/reports/${project.id}.pdf`} className="project-pdf-link" download>Download Technical Report</a>
+            </div>
+          )}
+        </>
       )}
-      
+
+      {/* Collapsible section for the GitHub Repository link */}
+      {project.hasCode && (
+        <>
+          <div className={`collapsible-section ${showCode ? 'active' : ''}`} onClick={toggleShowCode}>
+            <span>GitHub Repository</span>
+            <FontAwesomeIcon icon={getIcon(showCode)} className="fa-icon" />
+          </div>
+          {showCode && (
+            <div className="content">
+              <a href={project.githubLink} className="project-github-link" target="_blank" rel="noopener noreferrer">View Code on GitHub</a>
+            </div>
+          )}
+        </>
+      )}
 
       <div className="back-to-home-wrapper">
         <Link to="/" className="back-to-home">Back to Home</Link>
