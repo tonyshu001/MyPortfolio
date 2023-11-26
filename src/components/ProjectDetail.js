@@ -50,26 +50,31 @@ const ProjectDetail = () => {
       {/* Content section immediately follows the toggle for CSS sibling selector */}
       {showSpecs && (
         <div className="content">
-          {/* Replace with actual specifications content */}
-          <p>Specifications content goes here...</p>
+          {<div dangerouslySetInnerHTML={{ __html: project.specification }} />}
         </div>
       )}
 
-      {/* Collapsible section for GitHub link or PDF */}
-      <div className={`collapsible-section ${showRepo ? 'active' : ''}`} onClick={toggleRepo}>
-        <span>{project.pdf ? 'Technical Report PDF' : 'GitHub Repository'}</span>
-        <FontAwesomeIcon icon={getIcon(showRepo)} className="fa-icon" />
-      </div>
+      {project.hasReport || project.hasCode ? (
+        <div className={`collapsible-section ${showRepo ? 'active' : ''}`} onClick={toggleRepo}>
+          <span>{project.hasReport ? 'Technical Report' : 'GitHub Repository'}</span>
+          <FontAwesomeIcon icon={getIcon(showRepo)} className="fa-icon" />
+        </div>
+      ) : null}
+
       {/* Content section for GitHub link or PDF */}
       {showRepo && (
         <div className="content">
-          {project.pdf ?
-            <a href={project.pdf} className="project-pdf-link" download>Download Technical Report</a>
-            :
+          {project.hasReport ? (
+            // Assuming the report is stored in a 'reports' folder in 'public'
+            <a href={`${process.env.PUBLIC_URL}/reports/${project.id}.pdf`} className="project-pdf-link" download>Download Technical Report</a>
+          ) : null}
+          {project.hasCode ? (
+            // Replace `project.githubLink` with the actual GitHub link of your project
             <a href={project.githubLink} className="project-github-link" target="_blank" rel="noopener noreferrer">View Code on GitHub</a>
-          }
+          ) : null}
         </div>
       )}
+      
 
       <div className="back-to-home-wrapper">
         <Link to="/" className="back-to-home">Back to Home</Link>
