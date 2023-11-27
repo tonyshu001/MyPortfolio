@@ -10,6 +10,7 @@ const projects = [
         linkTo: "/projects/fact-checking-system",
         hasReport: true,
         hasCode: false,
+        hasVideo: false,
         specification: `
         <h2>Introduction</h2>
         <p>Climate change is a major global concern, and the rapid spread of misinformation, especially through social media, complicates public understanding of this issue. This highlights the need for automated fact-checking systems that rely on Natural Language Processing (NLP) models. However, creating an accurate system involves challenges in information retrieval and claim validation. This report details a structured pipeline developed to address these challenges effectively.</p>
@@ -34,7 +35,7 @@ const projects = [
         <h3>Stage One</h3>
         <p>Starts with a claim and a collection of evidence, aiming to filter out the most relevant pieces.</p>
         <ul>
-          <li><strong>Technique Used:</strong> BM25+ Function</li>
+          <li><strong>Technique Used:</strong> BM25+, Sentence Transformer, and DistilBERT</li>
           <li><strong>Purpose:</strong> To filter out the top 100 pieces of evidence from a larger collection, based on their similarity scores with the given claim.</li>
           <li><strong>Enhancement Strategy:</strong> Incorporation of Sentence Transformers with DistilBERT pre-trained weights for better context understanding and efficient processing. The model is fine-tuned with cosine similarity as the measure and cosine embedding loss for optimization, enhancing the precision of the retrieved evidence set.</li>
         </ul>
@@ -77,6 +78,7 @@ const projects = [
         linkTo: "/projects/e-ticket",
         hasReport: false,
         hasCode: true,
+        hasVideo: false,
         githubLink: "https://github.com/tonyshu001/eTickets",
         specification: `    
         <h2>Overview</h2>
@@ -125,6 +127,7 @@ const projects = [
         linkTo: "/projects/password-manager",
         hasReport: true,
         hasCode: true,
+        hasVideo: false,
         githubLink: "https://github.com/GG2T/PasswordManager",
         specification: `
         <h2>Overview</h2>
@@ -183,12 +186,50 @@ const projects = [
         `,
     },
     {
-        id: "reversi",
-        title: "AI agent for Reversi",
+        id: "unimelb-h1-hopper",
+        title: "Android game: Unimelb H1 Hopper",
         description:
-            "A Reversi AI agent project, ingeniously employing Monte Carlo Tree Search and Minimax.",
-        getImageSrc: () => require("../data/images/reversi.png"),
-        linkTo: "/projects/reversi",
+            "This game is designed to boost the motivation and confidence level of the Unimelb students in accomplishing their studies and getting to know better about the assessment process in Unimelb.",
+        getImageSrc: () => require("../data/images/unimelb-h1-hopper.png"),
+        linkTo: "/projects/unimelb-h1-hopper",
+        hasReport: false,
+        hasCode: true,
+        hasVideo: true,
+        videoId: "MCzcQqkgXfE",
+        githubLink: "https://github.com/rizkypascal/COMP90018_T01-07-3_2022",
+        specification: `
+        <h2>Overview</h2>
+        <p>
+            Unimelb H1 Hopper is an educational and motivational mobile game designed specifically for students of the University of Melbourne. 
+            The game aims to alleviate the stress and anxiety associated with challenging assessments by transforming study materials into interactive gameplay. 
+            Taking inspiration from the popular game Doodle Jump, Unimelb H1 Hopper incorporates educational elements, offering students a playful approach 
+            to understanding assessment structures and gaining confidence in their academic abilities.
+        </p>
+    
+        <h2>Technologies Used</h2>
+        <ul>
+            <li><strong>Database:</strong> Firebase for real-time data storage, user authentication, and hosting.</li>
+            <li><strong>Frontend:</strong> Native Android development with Java to ensure seamless user experience and responsive design.</li>
+            <li><strong>Sensors:</strong> Utilization of the device's accelerometer and magnetometer for movement controls, along with a light sensor for mode switching.</li>
+            <li><strong>Localization:</strong> Supports six languages, dynamically adapting to the smartphone's system language.</li>
+            <li><strong>Data Encryption:</strong> SHA-256 hashing algorithm to secure user passwords.</li>
+            <li><strong>Background Job Scheduling:</strong> Android's AlarmManager and BroadcastReceiver for managing periodic updates and notifications.</li>
+        </ul>
+    
+        <h2>Key Features</h2>
+        <ul>
+            <li><strong>User Interface:</strong> Responsive UI that supports both light and dark modes, adjusting to ambient light conditions.</li>
+            <li><strong>Internationalization:</strong> Multi-language support enhances usability for international students.</li>
+            <li><strong>Secure Sign-Up:</strong> Encrypted user authentication process with immediate feedback on success or failure.</li>
+            <li><strong>Gameplay:</strong> Levels correspond to different academic weeks, with monsters symbolizing various assessments.</li>
+            <li><strong>Sensor-Based Controls:</strong> Character movement is controlled through the device's orientation, offering an intuitive gaming experience.</li>
+            <li><strong>Tool Selection:</strong> Before gameplay, users can choose tools to aid their progress, such as rockets for flying and bombs for clearing obstacles.</li>
+            <li><strong>Level Customization:</strong> The faculty and subject selection feature allows for a personalized game experience, with level content fetched dynamically from Firebase.</li>
+            <li><strong>Evaluation and Feedback:</strong> A built-in survey mechanism to collect user feedback and make informed improvements.</li>
+            <li><strong>Grading Scale Integration:</strong> The game uses the University of Melbourne's grading scale to reward players, reinforcing academic goals.</li>
+            <li><strong>Future Enhancements:</strong> Planned social features for community building, enhanced animations for smoother transitions, and expanded content to include more faculties and subjects.</li>
+        </ul>
+        `,
     },
   ];
 

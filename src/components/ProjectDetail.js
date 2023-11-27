@@ -42,6 +42,25 @@ const ProjectDetail = () => {
     return isActive ? faChevronUp : faChevronDown;
   };
 
+  const embedYouTube = (videoId, description) => {
+    return (
+      <div className="video-section">
+        <div className="video-container">
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}`}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="Embedded youtube"
+          />
+        </div>
+        <p className="video-description">{description}</p>
+      </div>
+    );
+  };
+  
+  
+
   return (
     <div className="project-detail-container">
       <h1 className="project-title">{project.title}</h1>
@@ -55,6 +74,7 @@ const ProjectDetail = () => {
       </div>
       {showSpecs && (
         <div className="content">
+          {project.hasVideo && embedYouTube(project.videoId, "Video introduction to the game")}
           <div dangerouslySetInnerHTML={{ __html: project.specification }} />
         </div>
       )}
