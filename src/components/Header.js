@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { Link as ChakraLink } from "@chakra-ui/react"; // Renamed for clarity
+import { Link as RouterLink } from "react-router-dom";
 import {
   faGithub,
   faLinkedin,
@@ -20,6 +22,10 @@ const socials = [
 
 const links = [
   {
+    description: "My Experience",
+    id: "experience",
+  },
+  {
     description: "Projects",
     id: "projects",
   },
@@ -27,7 +33,6 @@ const links = [
     description: "Contact Me",
     id: "contactme",
   },
-
 ]
 
 const Header = () => {
@@ -71,10 +76,17 @@ const Header = () => {
   })
 
   const internalLinks = links.map((item) => {
-    return (<a key={item.id} href={`/#${item.id}`} onClick={handleClick(item.id)}>
-      {item.description}
-    </a>)
-  })
+    // Change your internal links to use RouterLink if they are supposed to change the route
+    return item.id === "experience" ? (
+      <ChakraLink as={RouterLink} to={`/${item.id}`} key={item.id}>
+        {item.description}
+      </ChakraLink>
+    ) : (
+      <ChakraLink href={`/#${item.id}`} onClick={handleClick(item.id)} key={item.id}>
+        {item.description}
+      </ChakraLink>
+    );
+  });
 
 
   return (
@@ -101,13 +113,14 @@ const Header = () => {
             <HStack spacing={8}>
               {socialLinks}
             </HStack>
-            
           </nav>
+
           <nav>
             <HStack spacing={8}>
               {internalLinks}
             </HStack>
           </nav>
+
         </HStack>
       </Box>
     </Box>
