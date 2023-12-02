@@ -49,21 +49,21 @@ const ExperiencePage = () => {
     <VStack spacing={5}>
     <Flex
           direction={{ base: 'column', md: 'row' }}
-          alignItems={{ base: 'flex-start', md: 'center' }} // Align items differently on mobile vs desktop
+          alignItems={{ base: 'flex-start', md: 'center' }} 
           w="full"
           p={{ base: 4, md: 6 }} // Padding responsive
-          mb={6} // Margin bottom for spacing between this and next section
+          mb={6} 
         >
           <Image
-            boxSize="150px" // increased from 100px to 150px
+            boxSize="150px" 
             borderRadius="full"
             src={profilePic}
             alt={name}
-            objectFit="cover" // ensures the image covers the area without stretching
-            boxShadow="lg" // adds a large shadow for a subtle depth effect
-            border="2px" // optional: adds a border
-            borderColor="gray.200" // optional: sets the border color
-            mr={{ base: 0, md: 6 }} // adjust margin as needed
+            objectFit="cover" 
+            boxShadow="lg" 
+            border="2px" 
+            borderColor="gray.200" 
+            mr={{ base: 0, md: 6 }} 
             mb={{ base: 4, md: 0 }}
             />
 
@@ -85,6 +85,17 @@ const ExperiencePage = () => {
           
         </Flex>
 
+        <Box className="profile-section" p={5} boxShadow="sm" rounded="lg" mt={-10} bg="white">
+            <Heading as="h3" size="md" fontWeight="bold" mb={4}>Profile</Heading>
+            <Text fontSize="md" color="gray.700">
+                I am a keen developer with great communication skills and a strong foundation in web
+                development, and proficiency in frameworks. I completed my Bachelor degree in 2021, and
+                will be completing my Masters of Computer Science in 06/2024. I completed an internship
+                in 2022 and would love to gain more professional experience, both for my growth and
+                development, and ideally to find a company I can grow with and contribute to. I hold a
+                student visa, which enables me to have unlimited working hours during the summer break.
+            </Text>
+        </Box>
 
       <Button as="a" href={resumeUrl} download leftIcon={<Icon as={EmailIcon} />} colorScheme="blue">
         Download CV
@@ -183,6 +194,29 @@ const ExperiencePage = () => {
                 </VStack>
               </Flex>
             </Box>
+
+            <Box p={5}>
+              <Text fontSize="md" className="project-description">
+              My computer science journey started at the University of Waikato, where I built a strong base in programming, software development, and computational theories. More importantly, It’s where I found my passion for the field of computer science.
+                </Text>
+                <Text fontSize="md" className="project-description">
+                  I stood out as a top student, maintaining a perfect GPA for two consecutive years. I also spent a lot of time helping my fellow students understand the material taught in our classes and prepare for exams. I believe that teaching others is a great way to make sure you really know the topic yourself. Plus, it was a great chance to work on my communication skills.
+                </Text>
+                
+
+                <Flex justifyContent="center" width="full" mt={4}>
+                <Button
+                  as="a"
+                  href="/transcripts/Tianbo_bachelor_transcript.pdf" // Update with the actual path to your transcript
+                  download
+                  leftIcon={<DownloadIcon />}
+                  colorScheme="blue"
+                  mt={4}
+                >
+                  Download Transcript
+                </Button>
+                </Flex>
+              </Box>
         </VStack>
     )}
       
