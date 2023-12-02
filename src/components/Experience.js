@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Flex,
     Box,
     VStack,
+    HStack,
     Text,
     Button,
     Image,
     Heading,
     Container,
     Stack,
-    Icon
+    Icon,
+    UnorderedList,
+    ListItem,
   } from '@chakra-ui/react';
 import '../css/experience.css';
 import { PhoneIcon, EmailIcon, InfoIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 import { DownloadIcon } from '@chakra-ui/icons';
 import profilePic from '../data/images/identification_photo.jpg';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { Divider } from '@chakra-ui/react';
+import uniMelbLogo from '../data/images/unimelb_logo.png'; 
+import WaikatoLogo from '../data/images/waikato_logo.png'
+
+
 
 const ExperiencePage = () => {
     const resumeUrl = '/cv/Tianbo_Shu_Resume.pdf';
@@ -23,6 +33,16 @@ const ExperiencePage = () => {
     const email = 'tonyshu0902@gmail.com';
     const phone = '+61 405146189';
     const address = '199 William St, Melbourne, VIC, Australia';
+
+    const [showEducation, setShowEducation] = useState(false);
+
+    const toggleEducation = () => {
+      setShowEducation(!showEducation);
+    };
+  
+    const getIcon = (isActive) => {
+      return isActive ? faChevronUp : faChevronDown;
+    };
 
   return (
     <Container maxW="container.md" py={{ base: 30, md: 12 }}>
@@ -47,7 +67,7 @@ const ExperiencePage = () => {
             mb={{ base: 4, md: 0 }}
             />
 
-          <VStack align="start" spacing={3} flex="1">
+          <VStack align="start" spacing={3} flex="1" ml={{ base: 0, md: 48 }}>
             <Heading as="h2" size="lg">{name}</Heading>
             <Stack direction="row" align="center">
             <Icon as={EmailIcon} w={4} h={4} mr={2} />
@@ -70,12 +90,105 @@ const ExperiencePage = () => {
         Download CV
       </Button>
 
+
+      <div className="collapsible-section" onClick={toggleEducation}>
+        <span>Education</span>
+        <FontAwesomeIcon icon={getIcon(showEducation)} className="fa-icon" />
+      </div>
+      {showEducation && (
+
+          <VStack spacing={4} align="start" className="education-background">
+            <Box className="education-highlight" p={5}>
+              <Flex alignItems="center" justifyContent="flex-start">
+                <Image 
+                  src={uniMelbLogo} 
+                  boxSize="50px" 
+                  alt="UniMelb Logo" 
+                  borderRadius="full" 
+                  mr={4} // Added margin to the right of the logo
+                />
+                <VStack align="start" spacing={1} ml={4}> {/* Optionally add marginLeft here */}
+                  <Text fontSize="md" fontWeight="semibold">University of Melbourne, Melbourne, VIC</Text>
+                  <HStack justifyContent="space-between" width="full">
+                    <Text fontSize="lg" fontWeight="bold">Master of Computer Science</Text>
+                    <Text fontSize="md" fontWeight="semibold">07/2022 - 06/2024</Text>
+                  </HStack>
+                  <Text fontSize="md">WAM: <Text as="span" fontWeight="bold">81.875/100</Text></Text>
+                  <Text fontSize="md" fontWeight="semibold">Main subjects:</Text>
+                  <Text fontSize="md">Research Methods, Machine Learning, Natural Language Processing, AI Planning, Mobile Computing, Database Management Systems</Text>
+                  <Text fontSize="md" fontWeight="semibold">Awards:</Text>
+                  <UnorderedList>
+                    <ListItem><Text>Melbourne Engineering and InformationTechnology Foundation Scholarship, 2022 - 2024 </Text></ListItem>
+                    <ListItem><Text>Melbourne Welcome Grant, 2022 </Text></ListItem>
+                  </UnorderedList>
+                </VStack>
+              </Flex>
+            </Box>
+
+              <Box p={5}>
+              <Text fontSize="md" className="project-description">
+                  As a Master's student in Computer Science at the University of Melbourne, I have immersed myself in a comprehensive study of advanced topics within the field, such as AI and machine learning. The program's research-oriented approach has significantly enhanced my academic capabilities. I have developed a deep understanding of how to critically analyze scientific papers, identify research gaps, and engage in scientific and academic writing.
+                </Text>
+                <Text fontSize="md" className="project-description">
+                  A key aspect of my studies has been the improvement of my communication skills, evident through my successful academic presentations, and proactive interactions within group work and academic community.
+                </Text>
+                <Text fontSize="md" className="project-description">
+                  My current research focuses on trajectory compression and query processing over compressed data. This work has been a blend of theoretical understanding and practical application, leading to the submission of a well-received research proposal, which earned a remarkable 95% score. Additionally, my academic presentation on the subject was awarded a perfect score of 100%, reflecting my proficiency in conveying complex concepts clearly and effectively.
+                </Text>
+                <Text fontSize="md" className="project-description">
+                This journey has not only broadened my technical expertise but also sharpened my ability to tackle complex problems with innovative solutions in a professional context.
+                </Text>
+
+                <Flex justifyContent="center" width="full" mt={4}>
+                <Button
+                  as="a"
+                  href="/transcripts/Tianbo_master_transcript.pdf" // Update with the actual path to your transcript
+                  download
+                  leftIcon={<DownloadIcon />}
+                  colorScheme="blue"
+                  mt={4}
+                >
+                  Download Transcript
+                </Button>
+                </Flex>
+              </Box>
+
+          {/* Separator for multiple education entries */}
+          <Divider my={5} />
+
+          <Box className="education-highlight" p={5}>
+              <Flex alignItems="center" justifyContent="flex-start">
+                <Image 
+                  src={WaikatoLogo} 
+                  boxSize="50px" 
+                  alt="Waikato Logo" 
+                  borderRadius="full" 
+                  mr={4} 
+                />
+                <VStack align="start" spacing={1} ml={4}> {/* Optionally add marginLeft here */}
+                  <Text fontSize="md" fontWeight="semibold">University of Waikato, Hamilton, New Zealand</Text>
+                  <HStack justifyContent="space-between" width="full">
+                    <Text fontSize="lg" fontWeight="bold">Bachelor of Science in Computer Science</Text>
+                    <Text fontSize="md" fontWeight="semibold">02/2019 - 11/2021</Text>
+                  </HStack>
+                  <Text fontSize="md">GPA: <Text as="span" fontWeight="bold">8.67/9</Text></Text>
+                  <Text fontSize="md" fontWeight="semibold">Main subjects:</Text>
+                  <Text fontSize="md">Object-Orinted Programming, Data Structures & Algorithms, Design & Analysis of Algorithms, Web Development, Mobile Computing, Database Design, Data Mining</Text>
+                  <Text fontSize="md" fontWeight="semibold">Awards:</Text>
+                  <UnorderedList>
+                    <ListItem><Text>Dean's List, 2021 </Text></ListItem>
+                    <ListItem><Text>Dean's List, 2020 </Text></ListItem>
+                    <ListItem><Text>Undergraduate High Achievement Bursary for International Students, 2019 </Text></ListItem>
+                  </UnorderedList>
+                </VStack>
+              </Flex>
+            </Box>
+        </VStack>
+    )}
+      
+
         {/* Education Section */}
-        <Box w="100%">
-          <Heading as="h3" size="lg" className="content h2">Education</Heading>
-          <Text fontSize="md" className="project-description">Your degree and university name here.</Text>
-          <Text className="collapsible-section active">Education Details</Text> {/* Dummy collapsible section */}
-        </Box>
+        
 
         {/* Work Experience Section */}
         <Box w="100%">

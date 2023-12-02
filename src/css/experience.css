@@ -1,0 +1,28 @@
+.education-highlight {
+    background-color: #f7f7f7; /* Light grey background for subtlety */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    margin-bottom: 20px; /* Space below the section */
+    display: flex; /* Flexbox layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between the logo and the text */
+    padding: 20px; /* Padding around the content */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  }
+  
+  /* Text styles for semibold and bold text for clarity and emphasis */
+  .education-highlight .chakra-text {
+    font-family: 'Segoe UI', sans-serif; /* Consistent font family */
+    color: #2a69ac; /* A theme color for text */
+  }
+  
+  /* Ensure that the flex container for the degree and dates expands fully */
+  .education-highlight .chakra-flex {
+    width: 100%;
+  }
+  
+  /* Style for the main subjects title */
+  .education-highlight .chakra-text span {
+    color: #2c5282; /* A darker shade of blue for emphasis */
+    font-weight: 600; /* Slightly bolder font */
+  }
+  
