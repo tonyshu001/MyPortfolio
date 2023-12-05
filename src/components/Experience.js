@@ -13,6 +13,7 @@ import {
     Icon,
     UnorderedList,
     ListItem,
+    Spacer,
   } from '@chakra-ui/react';
 import '../css/experience.css';
 import { PhoneIcon, EmailIcon, InfoIcon } from '@chakra-ui/icons';
@@ -24,6 +25,7 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from '@chakra-ui/react';
 import uniMelbLogo from '../data/images/unimelb_logo.png'; 
 import WaikatoLogo from '../data/images/waikato_logo.png'
+import yunjiLogo from '../data/images/yunji_logo.png';
 
 
 
@@ -35,14 +37,21 @@ const ExperiencePage = () => {
     const address = '199 William St, Melbourne, VIC, Australia';
 
     const [showEducation, setShowEducation] = useState(false);
+    const [showWorkExperience, setShowWorkExperience] = useState(false);
 
     const toggleEducation = () => {
       setShowEducation(!showEducation);
     };
+
+    const toggleWorkExperience = () => {
+      setShowWorkExperience(!showWorkExperience);
+    }
   
     const getIcon = (isActive) => {
       return isActive ? faChevronUp : faChevronDown;
     };
+
+
 
   return (
     <Container maxW="container.md" py={{ base: 30, md: 12 }}>
@@ -221,15 +230,58 @@ const ExperiencePage = () => {
     )}
       
 
-        {/* Education Section */}
-        
+      <div className="collapsible-section" onClick={toggleWorkExperience}>
+        <span>Work Experience</span>
+        <FontAwesomeIcon icon={getIcon(toggleWorkExperience)} className="fa-icon" />
+      </div>
+      
 
-        {/* Work Experience Section */}
-        <Box w="100%">
-          <Heading as="h3" size="lg" className="content h2">Work Experience</Heading>
-          <Text fontSize="md" className="project-description">Your job title and company name here.</Text>
-          <Text className="collapsible-section active">Work Experience Details</Text> {/* Dummy collapsible section */}
-        </Box>
+  
+
+  {showWorkExperience && (
+    <VStack spacing={4} align="start" className="education-background">
+    <Box className="education-highlight" p={5}>
+      <Flex alignItems="center" justifyContent="flex-start">
+        <Image 
+          src={yunjiLogo} 
+          boxSize="50px" 
+          alt="yunji Logo" 
+          borderRadius="full" 
+          mr={4} // Added margin to the right of the logo
+        />
+        <VStack align="start" spacing={1} ml={4}> {/* Optionally add marginLeft here */}
+          <Text fontSize="md" fontWeight="semibold">Yunji Technology, Beijing, China</Text>
+          <HStack justifyContent="space-between" width="full">
+            <Text fontSize="lg" fontWeight="bold">Java Developer Intern</Text>
+            <Text fontSize="md" fontWeight="semibold">01/2022 - 04/2022</Text>
+          </HStack>
+          
+          <Text fontSize="md" fontWeight="semibold">Contribution:</Text>
+          <UnorderedList>
+            <ListItem><Text>Addressed data inconsistency between CRM systems and company databases through API integration </Text></ListItem>
+            <ListItem><Text>Reduced code redundancy in existing projects </Text></ListItem>
+            <ListItem><Text>Developed database structures for new web applications</Text></ListItem>
+          </UnorderedList>
+        </VStack>
+      </Flex>
+    </Box>
+
+    <Box pl={5} pr={5} pb={5} pt={0} boxShadow="sm" rounded="lg" bg="white" mt={-3}>
+        <UnorderedList mt={3} spacing={2}>
+          <ListItem>
+            <Text fontSize="md" className="project-description">Developed batch processing within REST APIs, reducing API calls by 75%. This integration significantly enhanced the efficiency and consistency of data flow between systems.</Text>
+          </ListItem>
+          <ListItem>
+            <Text fontSize="md" className="project-description">Conducted code refactoring using the SOLID principles, leading to a 20% reduction in redundant code. This optimization resulted in improved performance and maintainability of the software.</Text>
+          </ListItem>
+          <ListItem>
+            <Text fontSize="md" className="project-description">Designed over 20 unique tables for different objects required in the company’s website processing logic, and implemented indexing for efficient data retrieval. The database structures were noted for their efficient and robust design.</Text>
+          </ListItem>
+        </UnorderedList>
+      </Box>
+      </VStack>
+  )}
+
 
         {/* Skills Section */}
         <Box w="100%">
