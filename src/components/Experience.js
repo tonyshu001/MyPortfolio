@@ -13,7 +13,10 @@ import {
     Icon,
     UnorderedList,
     ListItem,
-    Spacer,
+    Table, 
+    Tbody, 
+    Tr, 
+    Td,
   } from '@chakra-ui/react';
 import '../css/experience.css';
 import { PhoneIcon, EmailIcon, InfoIcon } from '@chakra-ui/icons';
@@ -21,7 +24,7 @@ import { Link } from 'react-router-dom';
 import { DownloadIcon } from '@chakra-ui/icons';
 import profilePic from '../data/images/identification_photo.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp, faL } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from '@chakra-ui/react';
 import uniMelbLogo from '../data/images/unimelb_logo.png'; 
 import WaikatoLogo from '../data/images/waikato_logo.png'
@@ -38,6 +41,7 @@ const ExperiencePage = () => {
 
     const [showEducation, setShowEducation] = useState(false);
     const [showWorkExperience, setShowWorkExperience] = useState(false);
+    const [showSkills, setShowSkills] = useState(false);
 
     const toggleEducation = () => {
       setShowEducation(!showEducation);
@@ -45,7 +49,11 @@ const ExperiencePage = () => {
 
     const toggleWorkExperience = () => {
       setShowWorkExperience(!showWorkExperience);
-    }
+    };
+
+    const toggleShowSKills = () => {
+      setShowSkills(!showSkills);
+    };
   
     const getIcon = (isActive) => {
       return isActive ? faChevronUp : faChevronDown;
@@ -235,66 +243,96 @@ const ExperiencePage = () => {
         <FontAwesomeIcon icon={getIcon(toggleWorkExperience)} className="fa-icon" />
       </div>
       
+        {showWorkExperience && (
+          <VStack spacing={4} align="start" className="education-background">
+          <Box className="education-highlight" p={5}>
+            <Flex alignItems="center" justifyContent="flex-start">
+              <Image 
+                src={yunjiLogo} 
+                boxSize="50px" 
+                alt="yunji Logo" 
+                borderRadius="full" 
+                mr={4} // Added margin to the right of the logo
+              />
+              <VStack align="start" spacing={1} ml={4}> {/* Optionally add marginLeft here */}
+                <Text fontSize="md" fontWeight="semibold">Yunji Technology, Beijing, China</Text>
+                <HStack justifyContent="space-between" width="full">
+                  <Text fontSize="lg" fontWeight="bold">Java Developer Intern</Text>
+                  <Text fontSize="md" fontWeight="semibold">01/2022 - 04/2022</Text>
+                </HStack>
+                
+                <Text fontSize="md" fontWeight="semibold">Contribution:</Text>
+                <UnorderedList>
+                  <ListItem><Text>Addressed data inconsistency between CRM systems and company databases through API integration </Text></ListItem>
+                  <ListItem><Text>Reduced code redundancy in existing projects </Text></ListItem>
+                  <ListItem><Text>Developed database structures for new web applications</Text></ListItem>
+                </UnorderedList>
+              </VStack>
+            </Flex>
+          </Box>
 
-  
-
-  {showWorkExperience && (
-    <VStack spacing={4} align="start" className="education-background">
-    <Box className="education-highlight" p={5}>
-      <Flex alignItems="center" justifyContent="flex-start">
-        <Image 
-          src={yunjiLogo} 
-          boxSize="50px" 
-          alt="yunji Logo" 
-          borderRadius="full" 
-          mr={4} // Added margin to the right of the logo
-        />
-        <VStack align="start" spacing={1} ml={4}> {/* Optionally add marginLeft here */}
-          <Text fontSize="md" fontWeight="semibold">Yunji Technology, Beijing, China</Text>
-          <HStack justifyContent="space-between" width="full">
-            <Text fontSize="lg" fontWeight="bold">Java Developer Intern</Text>
-            <Text fontSize="md" fontWeight="semibold">01/2022 - 04/2022</Text>
-          </HStack>
-          
-          <Text fontSize="md" fontWeight="semibold">Contribution:</Text>
-          <UnorderedList>
-            <ListItem><Text>Addressed data inconsistency between CRM systems and company databases through API integration </Text></ListItem>
-            <ListItem><Text>Reduced code redundancy in existing projects </Text></ListItem>
-            <ListItem><Text>Developed database structures for new web applications</Text></ListItem>
-          </UnorderedList>
-        </VStack>
-      </Flex>
-    </Box>
-
-    <Box pl={5} pr={5} pb={5} pt={0} boxShadow="sm" rounded="lg" bg="white" mt={-3}>
-        <UnorderedList mt={3} spacing={2}>
-          <ListItem>
-            <Text fontSize="md" className="project-description">Developed batch processing within REST APIs, reducing API calls by 75%. This integration significantly enhanced the efficiency and consistency of data flow between systems.</Text>
-          </ListItem>
-          <ListItem>
-            <Text fontSize="md" className="project-description">Conducted code refactoring using the SOLID principles, leading to a 20% reduction in redundant code. This optimization resulted in improved performance and maintainability of the software.</Text>
-          </ListItem>
-          <ListItem>
-            <Text fontSize="md" className="project-description">Designed over 20 unique tables for different objects required in the company’s website processing logic, and implemented indexing for efficient data retrieval. The database structures were noted for their efficient and robust design.</Text>
-          </ListItem>
-        </UnorderedList>
-      </Box>
-      </VStack>
-  )}
+          <Box pl={5} pr={5} pb={5} pt={0} boxShadow="sm" rounded="lg" bg="white" mt={-3}>
+              <UnorderedList mt={3} spacing={2}>
+                <ListItem>
+                  <Text fontSize="md" className="project-description">Developed batch processing within REST APIs, reducing API calls by 75%. This integration significantly enhanced the efficiency and consistency of data flow between systems.</Text>
+                </ListItem>
+                <ListItem>
+                  <Text fontSize="md" className="project-description">Conducted code refactoring using the SOLID principles, leading to a 20% reduction in redundant code. This optimization resulted in improved performance and maintainability of the software.</Text>
+                </ListItem>
+                <ListItem>
+                  <Text fontSize="md" className="project-description">Designed over 20 unique tables for different objects required in the company’s website processing logic, and implemented indexing for efficient data retrieval. The database structures were noted for their efficient and robust design.</Text>
+                </ListItem>
+              </UnorderedList>
+            </Box>
+            </VStack>
+        )}
 
 
-        {/* Skills Section */}
-        <Box w="100%">
-          <Heading as="h3" size="lg" className="content h2">Skills</Heading>
-          <Text fontSize="md" className="project-description">List your skills here.</Text>
-          <Text className="collapsible-section active">Skills Details</Text> {/* Dummy collapsible section */}
+      <div className="collapsible-section" onClick={toggleShowSKills}>
+        <span>Skills</span>
+        <FontAwesomeIcon icon={getIcon(toggleShowSKills)} className="fa-icon" />
+      </div>
+
+      
+      {showSkills && (
+        <Box className="skills-section" p={5} boxShadow="sm" rounded="lg" bg="white" mt={5}>
+          <Table variant="simple">
+            <Tbody>
+              <Tr>
+                <Td fontWeight="semibold">Programming Languages</Td>
+                <Td>Java, C#, Python, PHP, JavaScript</Td>
+              </Tr>
+              <Tr>
+                <Td fontWeight="semibold">Web Development</Td>
+                <Td>Responsive Web Design, REST API Deployment</Td>
+              </Tr>
+              <Tr>
+                <Td fontWeight="semibold">Frameworks</Td>
+                <Td>React.js, .NET MVC, Spring Technologies</Td>
+              </Tr>
+              <Tr>
+                <Td fontWeight="semibold">Database Management</Td>
+                <Td>MySQL, PostgreSQL</Td>
+              </Tr>
+              <Tr>
+                <Td fontWeight="semibold">Software Development</Td>
+                <Td>Agile Methodologies, SOLID, TDD, Version Control</Td>
+              </Tr>
+              <Tr>
+                <Td fontWeight="semibold">Others</Td>
+                <Td>Machine Learning, Data Structures & Algorithms, AWS</Td>
+              </Tr>
+            </Tbody>
+          </Table>
         </Box>
+      )} 
+      
       </VStack>
 
-      <Box className="back-to-home-wrapper">
-        <Link to="/" className="back-to-home">Back to Home</Link>
-      </Box>
-    </Container>
+       <Box className="back-to-home-wrapper">
+         <Link to="/" className="back-to-home">Back to Home</Link>
+       </Box>
+     </Container>
   );
 };
 
