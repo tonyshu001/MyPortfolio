@@ -240,7 +240,7 @@ const ExperiencePage = () => {
 
       <div className="collapsible-section" onClick={toggleWorkExperience}>
         <span>Work Experience</span>
-        <FontAwesomeIcon icon={getIcon(toggleWorkExperience)} className="fa-icon" />
+        <FontAwesomeIcon icon={getIcon(showWorkExperience)} className="fa-icon" />
       </div>
       
         {showWorkExperience && (
@@ -290,7 +290,7 @@ const ExperiencePage = () => {
 
       <div className="collapsible-section" onClick={toggleShowSKills}>
         <span>Skills</span>
-        <FontAwesomeIcon icon={getIcon(toggleShowSKills)} className="fa-icon" />
+        <FontAwesomeIcon icon={getIcon(showSkills)} className="fa-icon" />
       </div>
 
       
